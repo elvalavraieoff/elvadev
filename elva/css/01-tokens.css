@@ -1,0 +1,47 @@
+/* 01-tokens.css
+   Variables, reset et styles de base */
+
+:root{
+  color-scheme: dark;
+  --bg:#000000;
+  --bg-2:#07070a;
+  --bg-3:#0b0c10;
+  --card:#0d0e13;
+  --line:#1b1c22;
+  --line-2:#2a2c35;
+  --text:#f2f3f5;
+  --muted:#8a8d97;
+  --muted-2:#6a6d76;
+  --blue:#3d7bff;
+  --blue-dim:#2a5ed6;
+  --blue-soft:rgba(61,123,255,.10);
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  --display:'Bricolage Grotesque','Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --pad:clamp(20px,5vw,64px);
+  --max:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:500;line-height:1.05;letter-spacing:-.02em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+button{font:inherit;color:inherit}
+
+::selection{background:var(--blue);color:#fff}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px}
+
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
