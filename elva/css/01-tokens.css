@@ -11,10 +11,10 @@
   --line-2:#2a2c35;
   --text:#f2f3f5;
   --muted:#8a8d97;
-  --muted-2:#6a6d76;
-  --blue:#3d7bff;
-  --blue-dim:#2a5ed6;
-  --blue-soft:rgba(61,123,255,.10);
+  --muted-2:#766a74;
+  --blue:#ff3d7e;
+  --blue-dim:#d62a63;
+  --blue-soft:rgba(255, 61, 126, 0.1);
   --sans:'Inter',system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
   --display:'Bricolage Grotesque','Inter',system-ui,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
