@@ -16,5 +16,5 @@
   display:grid;place-items:center;color:var(--muted);background:var(--card);
   transition:color .18s ease,border-color .18s ease,transform .18s ease;
 }
-.soc:hover{color:var(--blue);border-color:rgba(61,123,255,.45);transform:translateY(-2px)}
+.soc:hover{color:var(--blue);border-color:rgba(255, 61, 119, 0.45);transform:translateY(-2px)}
 .soc svg{width:18px;height:18px}
