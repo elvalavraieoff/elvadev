@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMall — Elva</title>
+<meta name="description" content="DMall, outil desktop développé par Elva pour l'envoi de messages privés à l'ensemble des membres d'un serveur Discord.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" type="image/png" href="../img/devv.png?v=2">
+<link rel="shortcut icon" href="../favicon.ico?v=2">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- feuilles de style, dans l'ordre de la cascade -->
+  <link rel="stylesheet" href="../css/01-tokens.css">
+  <link rel="stylesheet" href="../css/02-layout.css">
+  <link rel="stylesheet" href="../css/03-buttons.css">
+  <link rel="stylesheet" href="../css/04-nav.css">
+  <link rel="stylesheet" href="../css/05-hero.css">
+  <link rel="stylesheet" href="../css/06-skills.css">
+  <link rel="stylesheet" href="../css/07-about.css">
+  <link rel="stylesheet" href="../css/08-projects.css">
+  <link rel="stylesheet" href="../css/09-services.css">
+  <link rel="stylesheet" href="../css/10-contact.css">
+  <link rel="stylesheet" href="../css/11-footer.css">
+  <link rel="stylesheet" href="../css/12-animations.css">
+  <link rel="stylesheet" href="../css/13-responsive.css">
+  <link rel="stylesheet" href="../css/14-project-detail.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="../index.html#accueil" class="brand">ELV<span>A</span></a>
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="../index.html#accueil">Accueil</a>
+      <a href="../index.html#competences">Compétences</a>
+      <a href="../index.html#apropos">À propos</a>
+      <a href="../index.html#projets">Projets</a>
+      <a href="../index.html#services">Services</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><i></i></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="../index.html#accueil">Accueil</a></li>
+      <li><a href="../index.html#competences">Compétences</a></li>
+      <li><a href="../index.html#apropos">À propos de moi</a></li>
+      <li><a href="../index.html#projets">Projets</a></li>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<section class="detail wrap">
+  <a class="detail-back" href="../index.html#projets">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Retour aux projets
+  </a>
+
+  <div class="detail-head">
+    <p class="detail-kicker">Outil desktop · Python</p>
+    <h1 class="detail-title">DMall</h1>
+    <p class="detail-lead">Un outil desktop pour envoyer un message privé à l'ensemble des membres d'un serveur Discord, avec suivi en temps réel de l'envoi et une console système détaillée.</p>
+    <div class="detail-tags"><span class="tag">Python</span><span class="tag">Desktop</span></div>
+  </div>
+  <div class="detail-gallery single">
+    <div class="gallery-item"><img src="../img/dmall.png" alt="Interface de DMall : connexion au bot, chargement des membres, message et console système"></div>
+  </div>
+  <div class="detail-body">
+    <div>
+    <p>DMall se connecte au bot via son token, charge la liste des membres du serveur ciblé, puis envoie le message préparé en message privé à chacun, avec un délai réglable entre chaque envoi pour rester raisonnable.</p>
+    <p>Le compteur d'envoyés et d'échoués se met à jour en direct, et la console système journalise chaque étape pour comprendre immédiatement ce qui se passe en cas de souci.</p>
+    </div>
+    <dl class="detail-meta">
+    <dt>Technologies</dt>
+    <dd>Python · interface desktop</dd>
+    <dt>Version</dt>
+    <dd>v1.1.2</dd>
+    <dt>Disponibilité</dt>
+    <dd>Achat possible — 5€</dd>
+    </dl>
+  </div>
+  <div class="detail-cta">
+    <div>
+      <h3>Envie d'utiliser DMall ?</h3>
+      <p>Outil disponible à l'achat — 5€, me contacter pour en discuter.</p>
+    </div>
+    <a href="../index.html#contact" class="btn btn--primary">Me contacter</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <p class="foot-brand">ELVA</p>
+        <p>Développeuse Bot Discord &amp; Web</p>
+      </div>
+      <nav class="foot-nav" aria-label="Navigation de pied de page">
+        <a href="../index.html#accueil">Accueil</a><i>·</i>
+        <a href="../index.html#competences">Compétences</a><i>·</i>
+        <a href="../index.html#apropos">À propos</a><i>·</i>
+        <a href="../index.html#projets">Projets</a><i>·</i>
+        <a href="../index.html#services">Services</a><i>·</i>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Elva — Tous droits réservés.</span>
+      <span>Conçu et développé par Elva</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/nav-menu.js"></script>
+<script src="../js/nav-scroll.js"></script>
+<script src="../js/smooth-scroll.js"></script>
+<script src="../js/active-link.js"></script>
+</body>
+</html>
