@@ -1,0 +1,124 @@
+/* ==========================================================================
+   accueil.css — Hero asymétrique, chiffres, carte Discord
+   ========================================================================== */
+
+/* ---------- Hero --------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: calc(100svh - var(--header-h));
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: clamp(36px, 7vw, 110px);
+  padding-block: clamp(40px, 6vw, 80px) 96px;
+}
+.hero__text { padding-left: clamp(0px, 2.5vw, 36px); }
+.hero__role {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+.hero__role::before { content: ""; width: 38px; border-top: 1.5px solid var(--accent); rotate: -4deg; }
+.hero .display { margin-bottom: 1.6rem; max-width: 12.5em; }
+.hero__mark { position: relative; display: inline-block; white-space: nowrap; }
+.hero__mark img { position: absolute; left: 0; bottom: -0.16em; width: 100%; height: 0.24em; }
+.hero .lead { margin-bottom: 2.2rem; }
+
+/* La photo collée */
+.hero__photo { position: relative; max-width: 420px; width: 100%; margin-left: auto; margin-top: clamp(0px, 4vw, 48px); }
+.hero__scrap { position: absolute; inset: 8% -9% -7% 10%; z-index: 0; }
+.hero__scrap .paper { height: 100%; padding: 0; }
+.hero__photo .polaroid { position: relative; z-index: 1; }
+.hero__star { top: -30px; right: -14px; --rot: 12deg; }
+.hero__heart { bottom: 70px; left: -34px; --rot: -14deg; width: clamp(30px, 3.8vw, 46px); }
+.hero__note { top: -26px; left: -78px; --rot: -7deg; }
+.hero__arrow { top: 16px; left: -50px; width: 70px; --rot: 8deg; }
+
+.hero__scroll {
+  position: absolute;
+  left: var(--gutter);
+  bottom: 30px;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  animation: nudge 3.2s ease-in-out infinite;
+}
+.hero__scroll:hover { color: var(--ink); }
+@keyframes nudge { 0%, 100% { translate: 0 0; } 50% { translate: 0 5px; } }
+
+/* ---------- Chiffres ----------------------------------------------------- */
+.stats { padding-block: 10px clamp(60px, 9vw, 110px); }
+.stats__sheet { max-width: 980px; margin-inline: auto; }
+.stats__grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.stat { position: relative; padding: 6px clamp(14px, 3vw, 34px); display: flex; flex-direction: column; gap: 0.25rem; }
+.stat + .stat { border-left: 1.5px dashed rgba(29, 27, 32, 0.3); }
+.stat__num { font-family: var(--font-title); font-weight: 400; font-size: clamp(2.4rem, 5vw, 3.7rem); line-height: 1; letter-spacing: -0.02em; }
+.stat__num--text { font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.08; padding-block: 0.3rem; }
+.stat__label { font-size: 0.98rem; line-height: 1.3; color: var(--paper-ink-soft); }
+.stat__extra { color: var(--accent-deep); font-size: 1.35rem; rotate: -2deg; margin-top: 0.15rem; }
+.stat__extra:empty { display: none; }
+
+/* ---------- Discord ------------------------------------------------------ */
+.discord {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+  padding-block: clamp(30px, 6vw, 70px) 0;
+}
+.discord__intro .title { margin-bottom: 1.1rem; }
+.discord-card { max-width: 520px; width: 100%; margin-left: auto; }
+.discord-card .paper { padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 44px) clamp(28px, 4vw, 40px); }
+
+.discord-card__head { display: flex; align-items: center; gap: 20px; margin-bottom: 1.6rem; }
+/* Avatar : petite photo carrée, bord blanc, légèrement penchée */
+.avatar {
+  position: relative;
+  flex: none;
+  width: 88px; height: 88px;
+  background: #ece8dd;
+  padding: 6px;
+  rotate: -4deg;
+  display: grid; place-items: center;
+}
+.avatar::before {
+  content: attr(data-initial);
+  position: absolute; inset: 6px;
+  display: grid; place-items: center;
+  background: #3a3641; color: #cfc9dd;
+  font-family: var(--font-hand); font-size: 2.6rem;
+}
+.avatar img { position: relative; width: 100%; height: 100%; object-fit: cover; }
+.discord-card__name { font-family: var(--font-title); font-size: 1.7rem; line-height: 1.1; letter-spacing: -0.01em; }
+.discord-card__status { margin-top: 0.2rem; font-size: 0.92rem; color: var(--sheet-soft); display: flex; align-items: center; gap: 0.5rem; }
+.discord-card__status::before { content: ""; width: 9px; height: 9px; background: var(--dot, #8f8a82); rotate: 45deg; }
+.discord-card__status[data-status="online"] { --dot: var(--accent); }
+
+.discord-card__error { font-family: var(--font-hand); font-size: 1.4rem; color: var(--accent); margin-bottom: 1.4rem; line-height: 1.1; }
+
+/* ---------- Tablette / mobile ------------------------------------------- */
+@media (max-width: 980px) {
+  .hero { grid-template-columns: 1fr; min-height: 0; padding-bottom: 90px; }
+  .hero__photo { margin: 24px auto 0; max-width: 360px; }
+  .hero__text { padding-left: 0; }
+  .hero__note { left: -50px; }
+  .hero__scroll { display: none; }
+  .discord { grid-template-columns: 1fr; }
+  .discord-card { margin-inline: auto; }
+}
+@media (max-width: 640px) {
+  .hero { padding-top: 28px; gap: 44px; }
+  .hero__photo { max-width: 300px; }
+  .hero__star { right: -8px; top: -24px; }
+  /* Les chiffres passent l'un sous l'autre, séparés par un pointillé horizontal */
+  .stats__grid { grid-template-columns: 1fr; gap: 6px; }
+  .stat { padding: 16px 6px; }
+  .stat + .stat { border-left: 0; border-top: 1.5px dashed rgba(29, 27, 32, 0.3); }
+  .discord-card__head { gap: 16px; }
+  .avatar { width: 76px; height: 76px; }
+}

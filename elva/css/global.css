@@ -1,0 +1,438 @@
+/* ==========================================================================
+   global.css — Fondations du carnet : couleurs, typo, papiers, scotch,
+   Polaroids, navigation, boutons, pied de page.
+   Chaque page charge ce fichier + son propre CSS.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap");
+
+/* ---------- 1. Variables ------------------------------------------------- */
+:root {
+  /* Le bureau (fond de page) et l'encre posée directement dessus */
+  --bg: #151417;
+  --ink: #ebe7dc;
+  --ink-soft: #a9a49a;
+  --line: rgba(235, 231, 220, 0.18);
+
+  /* Violet très discret : uniquement pour les traits à la main et détails */
+  --accent: #9a86c6;
+  --accent-deep: #6f5f96;
+
+  /* Papiers */
+  --paper: #e8e4d8;        /* blanc cassé */
+  --paper-gray: #cbc6b9;   /* gris papier */
+  --paper-dark: #27252b;   /* papier charbon */
+  --paper-ink: #1d1b20;
+  --paper-ink-soft: #57534d;
+
+  /* Grain très léger (bruit SVG, aucun fichier externe) */
+  --grain-w: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --grain-b: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --page-grain: var(--grain-w);
+  --page-grain-opacity: 0.05;
+
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-title: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-hand: "Caveat", "Segoe Script", "Bradley Hand", cursive;
+
+  --header-h: 68px;
+  --wrap: 1180px;
+  --gutter: clamp(20px, 5vw, 56px);
+}
+
+/* Thème clair = le carnet posé sur un bureau en papier gris */
+[data-theme="light"] {
+  --bg: #d5d0c3;
+  --ink: #1d1b20;
+  --ink-soft: #55514a;
+  --line: rgba(29, 27, 32, 0.25);
+  --accent: #a05a63;
+  --page-grain: var(--grain-b);
+  --page-grain-opacity: 0.09;
+}
+/* Les doodles clairs (flèches, étincelles) passent en encre foncée */
+[data-theme="light"] .doodle--ink { filter: invert(1) brightness(0.25); }
+
+/* ---------- 2. Base ------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+/* Texture de fond : fixe, discrète, ne capte aucun clic */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background-image: var(--page-grain);
+  opacity: var(--page-grain-opacity);
+}
+main { flex: 1; overflow-x: clip; }
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+a { color: inherit; }
+h1, h2, h3, p, ul, ol, figure, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.skip-link {
+  position: absolute; left: 12px; top: -60px; z-index: 200;
+  background: var(--paper); color: var(--paper-ink); padding: 8px 14px; text-decoration: none;
+}
+.skip-link:focus { top: 12px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- 3. Typographie ---------------------------------------------- */
+.display {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6.4vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+.display em { font-style: italic; color: var(--accent); }
+.title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.lead { color: var(--ink-soft); max-width: 46ch; }
+.hand { font-family: var(--font-hand); font-weight: 500; line-height: 1.05; }
+
+/* Annotation manuscrite posée sur la page */
+.note {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--font-hand);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  line-height: 1.05;
+  color: var(--accent);
+  rotate: var(--rot, -4deg);
+  transition: rotate 0.45s ease, translate 0.45s ease;
+  max-width: 11ch;
+}
+.note:hover { rotate: calc(var(--rot, -4deg) + 3deg); translate: 0 -3px; }
+
+/* Petits dessins (étoile, cœur, flèche…) */
+.doodle {
+  position: absolute;
+  z-index: 3;
+  width: clamp(34px, 4.6vw, 60px);
+  height: auto;
+  rotate: var(--rot, 0deg);
+  transition: rotate 0.45s ease, scale 0.45s ease;
+  user-select: none;
+}
+.doodle:hover { rotate: calc(var(--rot, 0deg) + 10deg); scale: 1.08; }
+.doodle--wide { width: clamp(70px, 9vw, 120px); }
+
+/* ---------- 4. Papiers : pièces, bords déchirés, scotch ------------------ */
+/* .piece porte l'ombre et la rotation ; le papier (clip-path) est à l'intérieur,
+   sinon le découpage couperait l'ombre. */
+.piece {
+  position: relative;
+  rotate: var(--rot, 0deg);
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45)) drop-shadow(0 10px 9px rgba(0, 0, 0, 0.32));
+  transition: rotate 0.5s ease, translate 0.5s ease, top 0.5s ease;
+}
+[data-theme="light"] .piece {
+  filter: drop-shadow(0 1px 1px rgba(40, 30, 20, 0.35)) drop-shadow(0 9px 8px rgba(40, 30, 20, 0.2));
+}
+.piece--lift:hover { rotate: calc(var(--rot, 0deg) * 0.35); top: -5px; }
+
+.r-l1 { --rot: -1deg; }  .r-l2 { --rot: -2.2deg; } .r-l3 { --rot: -3.6deg; } .r-l4 { --rot: -5deg; }
+.r-r1 { --rot: 1deg; }   .r-r2 { --rot: 2.2deg; }  .r-r3 { --rot: 3.6deg; }  .r-r4 { --rot: 5deg; }
+
+.paper {
+  position: relative;
+  background: var(--sheet-bg, var(--paper));
+  color: var(--sheet-ink, var(--paper-ink));
+  padding: clamp(24px, 3.4vw, 40px);
+}
+.paper::after { /* grain du papier */
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--sheet-grain, var(--grain-b));
+  opacity: 0.08;
+}
+.paper--gray { --sheet-bg: var(--paper-gray); }
+.paper--dark {
+  --sheet-bg: var(--paper-dark);
+  --sheet-ink: #e6e2d8;
+  --sheet-soft: #a29d94;
+  --sheet-grain: var(--grain-w);
+}
+.paper--dark::after { opacity: 0.05; }
+.paper { --sheet-soft: var(--paper-ink-soft); }
+.paper--dark { --sheet-soft: #a29d94; }
+
+/* Papier ligné (carnet) et papier quadrillé */
+.paper--lined {
+  background-image:
+    linear-gradient(90deg, transparent 58px, rgba(154, 134, 198, 0.55) 58px 59px, transparent 59px),
+    repeating-linear-gradient(transparent 0 33px, rgba(29, 27, 32, 0.13) 33px 34px);
+  background-position: 0 0, 0 14px;
+}
+.paper--grid {
+  background-image:
+    linear-gradient(rgba(29, 27, 32, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 27, 32, 0.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Bords déchirés — trois variantes, jamais deux fois la même impression */
+.torn-a {
+  clip-path: polygon(
+    0 5px, 5% 1px, 11% 6px, 17% 2px, 24% 6px, 31% 1px, 38% 5px, 46% 0, 53% 5px, 61% 2px, 68% 6px, 76% 1px, 83% 5px, 91% 2px, 100% 6px,
+    99.6% 35%, 100% 68%, 99.7% calc(100% - 5px),
+    94% calc(100% - 1px), 87% calc(100% - 6px), 79% calc(100% - 2px), 71% calc(100% - 5px), 63% 100%, 55% calc(100% - 5px), 47% calc(100% - 1px), 39% calc(100% - 6px), 30% calc(100% - 2px), 22% calc(100% - 5px), 14% 100%, 7% calc(100% - 4px), 0 calc(100% - 1px),
+    0.4% 62%, 0 30%);
+}
+.torn-b {
+  clip-path: polygon(
+    0 2px, 8% 0, 19% 3px, 33% 0, 47% 2px, 62% 0, 78% 3px, 90% 1px, 100% 3px,
+    100% calc(100% - 7px), 93% calc(100% - 2px), 85% calc(100% - 8px), 76% calc(100% - 3px), 66% calc(100% - 9px), 57% calc(100% - 2px), 48% calc(100% - 7px), 38% 100%, 29% calc(100% - 6px), 20% calc(100% - 1px), 11% calc(100% - 7px), 4% calc(100% - 2px), 0 calc(100% - 6px));
+}
+.torn-c {
+  clip-path: polygon(
+    0 7px, 6% 2px, 14% 8px, 23% 1px, 34% 6px, 45% 0, 57% 7px, 69% 2px, 81% 8px, 92% 3px, 100% 7px,
+    100% 100%, 0 100%);
+}
+
+/* Scotch transparent */
+.tape {
+  position: absolute;
+  z-index: 4;
+  width: 104px;
+  height: 30px;
+  left: 50%;
+  top: -14px;
+  margin-left: -52px;
+  rotate: var(--tape-rot, -3deg);
+  background: rgba(214, 208, 188, 0.34);
+  border-block: 1px solid rgba(255, 255, 255, 0.1);
+  clip-path: polygon(0 0, 3% 22%, 0 44%, 3% 66%, 0 100%, 100% 100%, 97% 78%, 100% 55%, 97% 30%, 100% 0);
+  pointer-events: none;
+}
+.tape--tl { left: -30px; top: 8px; margin-left: 0; --tape-rot: -38deg; }
+.tape--tr { left: auto; right: -30px; top: 8px; margin-left: 0; --tape-rot: 38deg; }
+.tape--bl { left: -26px; top: auto; bottom: 10px; margin-left: 0; --tape-rot: 36deg; }
+.tape--short { width: 78px; margin-left: -39px; }
+
+/* ---------- 5. Photos : Polaroid + emplacement d'image ------------------- */
+.polaroid {
+  background: #ece8dd;
+  padding: clamp(10px, 1.5vw, 16px) clamp(10px, 1.5vw, 16px) 0;
+  width: 100%;
+}
+.polaroid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--grain-b);
+  opacity: 0.07;
+}
+.polaroid figcaption {
+  font-family: var(--font-hand);
+  font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+  line-height: 1;
+  color: #2a2730;
+  text-align: center;
+  padding: 0.7rem 0.4rem 0.9rem;
+  min-height: 3.1rem;
+}
+
+/* Conteneur d'image : ratio fixe + object-fit. Si l'image manque,
+   main.js ajoute .is-missing et un petit papier "photo à venir" apparaît. */
+.photo { position: relative; overflow: hidden; background: #2b282e; aspect-ratio: var(--ratio, 4 / 5); }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo--square { --ratio: 1 / 1; }
+.photo--wide { --ratio: 16 / 10; }
+.photo.is-missing { background-image: repeating-linear-gradient(135deg, transparent 0 9px, rgba(235, 231, 220, 0.05) 9px 10px); }
+.photo.is-missing img { display: none; }
+.photo.is-missing::before {
+  content: "photo à venir";
+  position: absolute;
+  inset: 12%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border: 1.5px dashed rgba(235, 231, 220, 0.3);
+  color: #b5afa4;
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+}
+
+/* ---------- 6. Boutons --------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.4rem;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  rotate: var(--rot, 0deg);
+  transition: background-color 0.3s ease, color 0.3s ease, rotate 0.3s ease, translate 0.3s ease;
+}
+.btn:hover { background: var(--ink); color: var(--bg); rotate: 0deg; translate: 0 -2px; }
+/* Bouton "étiquette de papier collée" */
+.btn--paper {
+  --rot: -1.2deg;
+  background: var(--paper);
+  color: var(--paper-ink);
+  border-color: var(--paper);
+  box-shadow: 3px 4px 0 var(--accent-deep);
+}
+.btn--paper:hover { background: var(--paper); color: var(--paper-ink); box-shadow: 5px 6px 0 var(--accent-deep); }
+.btn.is-unset { opacity: 0.55; border-style: dashed; cursor: not-allowed; }
+.btn.is-unset:hover { background: transparent; color: var(--ink); translate: 0 0; }
+
+/* Lignes de registre avec pointillés */
+.ledger { margin-bottom: 1.8rem; }
+.ledger__row { display: flex; align-items: baseline; gap: 1rem; padding-block: 0.55rem; }
+.ledger__row[hidden] { display: none; }
+.ledger dt { display: flex; flex: 1; align-items: baseline; gap: 0.7rem; color: var(--sheet-soft); font-size: 0.95rem; }
+.ledger dt::after { content: ""; flex: 1; border-bottom: 1.5px dotted currentColor; opacity: 0.4; translate: 0 -4px; }
+.ledger dd { font-family: var(--font-title); font-size: 1.35rem; }
+
+/* Lien texte avec soulignement ondulé (fait main) */
+.link-wavy { text-decoration: underline wavy var(--accent) 1px; text-underline-offset: 6px; }
+
+/* ---------- 7. Navigation ------------------------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--bg);
+  border-bottom: 1px dashed var(--line);
+  transition: background-color 0.4s ease;
+}
+.site-header__inner {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+.brand img { width: 20px; height: 20px; rotate: 12deg; transition: rotate 0.5s ease; }
+.brand:hover img { rotate: 90deg; }
+
+.nav { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 34px); }
+.nav__links { display: flex; gap: clamp(16px, 2.4vw, 34px); }
+.nav__links a {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-block: 6px;
+  transition: color 0.25s ease;
+}
+.nav__links a:hover { color: var(--ink); text-decoration: underline wavy var(--accent) 1px; text-underline-offset: 7px; }
+.nav__links a[aria-current="page"] { color: var(--ink); text-decoration: underline wavy var(--accent) 1px; text-underline-offset: 7px; }
+
+.theme-toggle, .burger {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  transition: border-color 0.25s ease, rotate 0.4s ease;
+}
+.theme-toggle:hover, .burger:hover { border-color: var(--ink); rotate: -6deg; }
+.theme-toggle svg { width: 17px; height: 17px; }
+.burger { display: none; }
+.burger span, .burger span::before {
+  display: block; width: 18px; height: 1.5px; background: currentColor; position: relative;
+  transition: transform 0.3s ease;
+}
+.burger span::before { content: ""; position: absolute; top: 6px; left: 0; }
+.burger[aria-expanded="true"] span { transform: translateY(3px) rotate(45deg); }
+.burger[aria-expanded="true"] span::before { transform: translateY(-6px) rotate(-90deg); top: 6px; }
+
+@media (max-width: 760px) {
+  .burger { display: grid; }
+  .nav { gap: 10px; }
+  .nav__links {
+    position: absolute;
+    top: var(--header-h);
+    left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px var(--gutter) 22px;
+    background: var(--bg);
+    border-bottom: 1px dashed var(--line);
+    visibility: hidden;
+    opacity: 0;
+    translate: 0 -8px;
+    transition: opacity 0.3s ease, translate 0.3s ease, visibility 0.3s;
+  }
+  .nav__links.is-open { visibility: visible; opacity: 1; translate: 0 0; }
+  .nav__links a {
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    color: var(--ink);
+    padding-block: 12px;
+    border-bottom: 1px dotted var(--line);
+  }
+}
+
+/* ---------- 8. Pied de page --------------------------------------------- */
+.site-footer { border-top: 1px dashed var(--line); padding-block: 34px 40px; margin-top: clamp(40px, 8vw, 100px); }
+.site-footer__inner { display: flex; flex-wrap: wrap; gap: 14px 40px; align-items: baseline; justify-content: space-between; }
+.visit-counter { font-family: var(--font-title); font-style: italic; font-size: 1.15rem; }
+.visit-counter strong { font-style: normal; font-weight: 600; color: var(--accent); }
+.site-footer small { color: var(--ink-soft); font-size: 0.85rem; }
+
+/* ---------- 9. Apparition douce ----------------------------------------- */
+.js .reveal { opacity: 0; translate: 0 16px; transition: opacity 0.8s ease, translate 0.8s ease, rotate 0.5s ease, top 0.5s ease; }
+.js .reveal.is-visible { opacity: 1; translate: 0 0; }
+.reveal[data-delay="1"] { transition-delay: 0.1s; }
+.reveal[data-delay="2"] { transition-delay: 0.2s; }
+.reveal[data-delay="3"] { transition-delay: 0.3s; }
+
+/* ---------- 10. Décor superflu masqué sur petit écran -------------------- */
+@media (max-width: 640px) {
+  .hide-sm { display: none !important; }
+}
+
+/* ---------- 11. Mouvement réduit ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
+  .js .reveal { opacity: 1; translate: 0 0; }
+}

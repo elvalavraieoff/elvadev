@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services — ELVA</title>
+  <meta name="description" content="Tarifs d'ELVA : bots Discord sur mesure, création de serveur, service DM et hébergement.">
+  <meta name="theme-color" content="#151417">
+  <link rel="icon" type="image/svg+xml" href="assets/doodles/star.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/service.css">
+  <!-- Micro-script : applique le thème enregistré avant l'affichage (évite un flash) -->
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("elva-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-services">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="ELVA, retour à l'accueil">ELVA <img src="assets/doodles/star.svg" alt="" width="20" height="20"></a>
+      <nav class="nav" aria-label="Navigation principale">
+        <div class="nav__links" id="menu">
+        <a href="index.html">Accueil</a>
+        <a href="service.html" aria-current="page">Services</a>
+        <a href="projets.html">Projets</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="competences.html">Compétences</a>
+        <a href="contact.html">Contact</a>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Changer de thème (sombre / clair)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+        </button>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <header class="page-head wrap">
+      <h1 class="display reveal">Services</h1>
+      <p class="lead reveal" data-delay="1">Bots, serveurs, DM et hébergement : voici ce que je propose, et à quel prix.</p>
+    </header>
+
+    <section class="services wrap" aria-label="Tarifs">
+      <div class="offers">
+        <!-- Achat de bot -->
+        <article class="offer piece r-l2 reveal">
+          <span class="tape tape--short"></span>
+          <div class="paper torn-a">
+            <h3 class="offer__name">Achat de bot</h3>
+            <p class="offer__main">
+              <span class="offer__what">Bot custom</span>
+              <strong class="offer__price">10&nbsp;€</strong>
+            </p>
+            <dl class="ledger">
+              <div class="ledger__row"><dt>Changement mineur</dt><dd>+1,50&nbsp;€</dd></div>
+              <div class="ledger__row"><dt>Changement majeur</dt><dd>+2&nbsp;€</dd></div>
+              <div class="ledger__row"><dt>Système unique</dt><dd>3&nbsp;€</dd></div>
+            </dl>
+            <p class="offer__note hand">Bot fourni et configuré par mes soins</p>
+            <p class="offer__fine">Prix pouvant <strong>varier selon la demande et la complexité</strong>.</p>
+          </div>
+        </article>
+
+        <!-- Création de serveur -->
+        <article class="offer piece r-r2 reveal" data-delay="1">
+          <span class="tape"></span>
+          <div class="paper paper--dark torn-b">
+            <h3 class="offer__name">Création de serveur</h3>
+            <p class="offer__main">
+              <span class="offer__what">Création complète d'un serveur Discord</span>
+              <strong class="offer__price">20&nbsp;€</strong>
+            </p>
+            <ul class="offer__list">
+              <li>Création et configuration complète</li>
+              <li>Catégories, salons &amp; rôles</li>
+              <li>Permissions &amp; organisation</li>
+              <li>Bot fourni par mes soins</li>
+              <li>Hébergement <strong>free</strong> sans frais</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Service DM -->
+        <article class="offer piece r-l1 reveal" data-delay="2">
+          <span class="tape tape--short"></span>
+          <div class="paper paper--gray torn-c">
+            <h3 class="offer__name">Service DM</h3>
+            <p class="offer__main">
+              <span class="offer__what">DM All Serveur</span>
+            </p>
+            <dl class="ledger">
+              <div class="ledger__row"><dt>Moins de 100 membres</dt><dd>2&nbsp;€</dd></div>
+              <div class="ledger__row"><dt>Plus de 100 membres</dt><dd>5&nbsp;€</dd></div>
+              <div class="ledger__row"><dt>Plus de 500 membres</dt><dd>10&nbsp;€</dd></div>
+            </dl>
+            <p class="offer__warn"><strong class="hand">Important</strong>Vous devez être <strong>administrateur ou propriétaire du serveur</strong> afin de pouvoir effectuer le service.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Informations -->
+      <div class="infos piece r-r1 reveal">
+        <span class="tape tape--tl"></span>
+        <div class="paper torn-b">
+          <h3 class="offer__name">Informations</h3>
+          <ul class="infos__list">
+            <li><strong>Hébergement</strong> : <strong>1&nbsp;€/mois</strong></li>
+            <li><strong>Hébergement gratuit</strong> pour les bots achetés chez moi</li>
+            <li>Possibilité de prendre <strong>uniquement l'hébergement</strong></li>
+            <li><strong>Setup propre &amp; optimisé</strong></li>
+            <li><strong>Support disponible</strong> après achat</li>
+            <li><strong>Paiements acceptés</strong> : PayPal / LTC</li>
+            <li><strong>Échanges possibles</strong> selon l'offre</li>
+            <li><strong>Réductions possibles</strong> pour plusieurs systèmes</li>
+            <li><strong>Aucun remboursement</strong> après achat</li>
+            <li><a class="link-wavy" href="https://docs.google.com/document/d/1bKA4opSH2Uo81KlIkbDxPKY4plg-Ss-x03MM86yeb08/edit?usp=drivesdk" target="_blank" rel="noopener"><strong>ToS Achat Bot</strong></a></li>
+            <li><strong>Création du bot</strong> de votre côté</li>
+            <li>Le <strong>token du bot</strong> ne doit être transmis que lorsqu'il est demandé</li>
+          </ul>
+          <p class="infos__sign hand">By Elva</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap services-end reveal">
+      <p class="services-end__text">Un besoin précis ?</p>
+      <a class="btn btn--paper" href="contact.html">Passer commande</a>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <!-- Rempli par js/visits.js (compteur réel, jamais un faux chiffre) -->
+      <p class="visit-counter" data-visit-counter aria-live="polite" hidden></p>
+      <small>© <span data-year>2026</span> ELVA — Développeuse bots &amp; serveurs Discord</small>
+    </div>
+  </footer>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/visits.js" defer></script>
+</body>
+</html>

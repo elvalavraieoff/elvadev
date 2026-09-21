@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — ELVA</title>
+  <meta name="description" content="Discutons de votre projet : Discord, email, Fiverr, GitHub.">
+  <meta name="theme-color" content="#151417">
+  <link rel="icon" type="image/svg+xml" href="assets/doodles/star.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <!-- Micro-script : applique le thème enregistré avant l'affichage (évite un flash) -->
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("elva-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-contact">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="ELVA, retour à l'accueil">ELVA <img src="assets/doodles/star.svg" alt="" width="20" height="20"></a>
+      <nav class="nav" aria-label="Navigation principale">
+        <div class="nav__links" id="menu">
+        <a href="index.html">Accueil</a>
+        <a href="service.html">Services</a>
+        <a href="projets.html">Projets</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="competences.html">Compétences</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Changer de thème (sombre / clair)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+        </button>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="contact wrap">
+
+      <div class="contact__text">
+        <h1 class="display reveal">Discutons de votre projet.</h1>
+        <p class="lead reveal" data-delay="1">Une idée ? Une envie ? N'hésitez pas à me contacter, je serai ravie d'en discuter avec vous.</p>
+
+        <ul class="contact-links reveal" data-delay="2">
+          <li><a class="contact-link" data-link="discord" href="#" target="_blank" rel="noopener"><span>Discord</span><span aria-hidden="true">↗</span></a></li>
+          <li><a class="contact-link" data-link="email" href="#"><span>Email</span><span aria-hidden="true">↗</span></a></li>
+          <li><a class="contact-link" data-link="fiverr" href="#" target="_blank" rel="noopener"><span>Fiverr</span><span aria-hidden="true">↗</span></a></li>
+          <li><a class="contact-link" data-link="github" href="#" target="_blank" rel="noopener"><span>GitHub</span><span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section class="reviews wrap" id="avis">
+      <div class="reviews__head">
+        <h2 class="reveal">Ils m'ont laissé un avis</h2>
+        <p class="lead reveal" data-delay="1">Vous avez travaillé avec moi ? Laissez un petit mot, il apparaît directement sur le site.</p>
+      </div>
+
+      <form class="reviews__form reveal paper" data-delay="2" id="review-form">
+        <div class="reviews__row">
+          <label for="review-name">Votre nom</label>
+          <input type="text" id="review-name" name="name" maxlength="60" required placeholder="ex. Marine">
+        </div>
+        <div class="reviews__row">
+          <label for="review-rating">Note</label>
+          <select id="review-rating" name="rating" required>
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+          </select>
+        </div>
+        <div class="reviews__row reviews__row--full">
+          <label for="review-message">Votre avis</label>
+          <textarea id="review-message" name="message" maxlength="500" rows="4" required placeholder="Votre expérience avec moi…"></textarea>
+        </div>
+        <!-- Piège anti-bot invisible : si rempli, l'avis est ignoré -->
+        <div class="reviews__hp" aria-hidden="true">
+          <label for="review-website">Site web</label>
+          <input type="text" id="review-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <button class="btn" type="submit">Publier mon avis</button>
+        <p class="reviews__status" data-review-status role="status" aria-live="polite"></p>
+      </form>
+
+      <ul class="reviews__list" id="review-list" data-review-list aria-live="polite">
+        <!-- Rempli automatiquement par js/reviews.js -->
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <!-- Rempli par js/visits.js (compteur réel, jamais un faux chiffre) -->
+      <p class="visit-counter" data-visit-counter aria-live="polite" hidden></p>
+      <small>© <span data-year>2026</span> ELVA — Développeuse bots &amp; serveurs Discord</small>
+    </div>
+  </footer>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/visits.js" defer></script>
+  <script src="js/reviews.js" defer></script>
+</body>
+</html>
