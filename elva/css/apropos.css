@@ -1,0 +1,51 @@
+/* ==========================================================================
+   apropos.css — Une page de journal + un collage de Polaroids
+   ========================================================================== */
+.page-head { padding-block: clamp(44px, 7vw, 88px) clamp(24px, 4vw, 44px); }
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-areas: "journal collage" "sticky collage";
+  gap: clamp(28px, 4vw, 48px) clamp(40px, 7vw, 110px);
+  align-items: start;
+  padding-bottom: clamp(30px, 6vw, 80px);
+}
+.journal { grid-area: journal; }
+.sticky { grid-area: sticky; width: min(320px, 78%); margin-left: clamp(0px, 8vw, 90px); margin-top: -10px; }
+.collage { grid-area: collage; }
+
+/* La page de carnet : texte décalé après la marge violette */
+.journal .paper { padding: clamp(30px, 4vw, 52px) clamp(22px, 4vw, 48px) clamp(34px, 4vw, 48px) clamp(74px, 8vw, 96px); }
+.journal__intro { font-size: clamp(1.15rem, 1.7vw, 1.35rem); line-height: 34px; max-width: 36ch; }
+.journal__list-title { margin-top: 34px; font-size: 1.9rem; color: var(--accent-deep); line-height: 34px; }
+.journal__list li { line-height: 34px; padding-left: 1.6rem; position: relative; }
+.journal__list li::before { content: "✶"; position: absolute; left: 0; color: var(--accent-deep); font-size: 0.85em; }
+.journal__note { position: relative; display: block; margin: 22px 0 0 auto; max-width: 14ch; text-align: right; color: var(--accent-deep); --rot: -3deg; }
+
+.sticky .paper { padding: 26px 26px 30px; }
+.sticky .hand { font-size: 1.8rem; color: var(--paper-ink); }
+
+/* Collage : trois Polaroids qui se chevauchent */
+.collage { position: relative; min-height: clamp(560px, 62vw, 700px); }
+.collage .polaroid { position: absolute; }
+.collage__a { width: 66%; top: 0; right: 0; z-index: 1; }
+.collage__b { width: 50%; top: 40%; left: 0; z-index: 2; }
+.collage__c { width: 42%; bottom: 0; right: 6%; z-index: 3; }
+.collage__star { top: 36%; right: 2%; --rot: 14deg; }
+
+@media (max-width: 900px) {
+  .about { grid-template-columns: 1fr; grid-template-areas: "journal" "sticky" "collage"; }
+  .sticky { margin-left: auto; margin-right: clamp(0px, 6vw, 40px); }
+  .collage { min-height: 0; display: flex; flex-direction: column; max-width: 440px; margin-inline: auto; width: 100%; }
+  .collage .polaroid { position: relative; inset: auto; }
+  .collage__a { width: 82%; align-self: flex-end; }
+  .collage__b { width: 66%; align-self: flex-start; margin-top: -36px; }
+  .collage__c { width: 58%; align-self: flex-end; margin-top: -30px; }
+}
+@media (max-width: 520px) {
+  .journal .paper { padding-left: 62px; padding-right: 20px; }
+  .paper--lined { background-image:
+    linear-gradient(90deg, transparent 44px, rgba(154, 134, 198, 0.55) 44px 45px, transparent 45px),
+    repeating-linear-gradient(transparent 0 33px, rgba(29, 27, 32, 0.13) 33px 34px); }
+}

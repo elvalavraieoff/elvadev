@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ELVA — Développeuse bots & serveurs Discord</title>
+  <meta name="description" content="Je crée des bots Discord et des serveurs sur mesure, adaptés aux besoins de chaque projet.">
+  <meta name="theme-color" content="#151417">
+  <link rel="icon" type="assets/doodles" href="img/star.svg?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/accueil.css">
+  <!-- Micro-script : applique le thème enregistré avant l'affichage (évite un flash) -->
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("elva-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body class="page-home">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="index.html" aria-label="ELVA, retour à l'accueil">ELVA <img src="assets/doodles/star.svg" alt="" width="20" height="20"></a>
+      <nav class="nav" aria-label="Navigation principale">
+        <div class="nav__links" id="menu">
+        <a href="index.html" aria-current="page">Accueil</a>
+        <a href="projets.html">Projets</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="competences.html">Compétences</a>
+        <a href="contact.html">Contact</a>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Changer de thème (sombre / clair)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+        </button>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <!-- HERO : texte à gauche, photo collée à droite -->
+    <section class="hero wrap">
+      <div class="hero__text">
+        <p class="hero__role reveal">Développeuse</p>
+        <h1 class="display reveal" data-delay="1">Des bots et serveurs Discord <span class="hero__mark">sur mesure.<img src="assets/doodles/underline.svg" alt="" aria-hidden="true"></span></h1>
+        <p class="lead reveal" data-delay="2">Je crée des bots Discord et des serveurs adaptés à vos besoins, avec une approche simple, efficace et personnalisée.</p>
+        <p class="reveal" data-delay="3"><a class="btn btn--paper" href="projets.html">Voir mes projets →</a></p>
+      </div>
+
+      <div class="hero__photo">
+        <div class="hero__scrap piece r-l3" aria-hidden="true"><div class="paper paper--gray torn-b"></div></div>
+        <figure class="polaroid piece r-r3 reveal">
+          <span class="tape"></span>
+          <div class="photo">
+            <img src="assets/images/elv.png" width="800" height="1000" alt="Portrait d'ELVA" fetchpriority="high">
+          </div>
+          <figcaption>elva</figcaption>
+        </figure>
+        <img class="doodle hero__star" src="assets/doodles/star.svg" alt="" aria-hidden="true" width="60" height="60">
+        <img class="doodle hero__heart hide-sm" src="assets/doodles/heart.svg" alt="" aria-hidden="true" width="60" height="60">
+        <img class="doodle doodle--ink doodle--wide hero__arrow hide-sm" src="assets/doodles/arrow.svg" alt="" aria-hidden="true" width="120" height="90">
+      </div>
+
+      <a class="hero__scroll" href="#chiffres">↓ Scroll</a>
+    </section>
+
+    <!-- CHIFFRES : très courts -->
+    <section class="stats wrap" id="chiffres" aria-label="En quelques chiffres">
+      <div class="stats__sheet piece r-l1 reveal">
+        <span class="tape tape--short"></span>
+        <div class="paper paper--gray torn-a">
+          <ul class="stats__grid">
+            <li class="stat">
+              <strong class="stat__num">2+</strong>
+              <span class="stat__label">ans<br>d'expérience</span>
+            </li>
+            <li class="stat">
+              <strong class="stat__num">Plusieurs</strong>
+              <span class="stat__label">projets</span>
+              <!-- Rempli par projects.js : nombre réel de projets listés -->
+              <span class="stat__extra hand" data-projects-count></span>
+            </li>
+            <li class="stat">
+              <strong class="stat__num stat__num--text">Bots &amp; serveurs</strong>
+              <span class="stat__label">Discord</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCORD : données réelles via /api/discord (jamais de token côté navigateur) -->
+    <section class="discord wrap" aria-labelledby="discord-title">
+      <div class="discord__intro reveal">
+        <h2 class="title" id="discord-title">Retrouvez-moi sur Discord.</h2>
+        <p class="lead">Rejoignez le serveur, ou écrivez-moi directement pour parler de votre projet.</p>
+      </div>
+
+      <div class="discord-card piece r-r1 reveal" data-discord-card>
+        <span class="tape"></span>
+        <div class="paper paper--dark torn-b">
+          <div class="discord-card__head">
+            <div class="avatar" data-initial=">
+              <img data-discord="avatar" alt="E" width="128" height="128" hidden>
+            </div>
+            <div>
+              <p class="discord-card__name" data-discord="name">…</p>
+              <p class="discord-card__status" data-discord="status" hidden></p>
+            </div>
+          </div>
+
+          <dl class="ledger">
+            <div class="ledger__row" data-discord-row="server"><dt>Serveur</dt><dd data-discord="server">…</dd></div>
+            <div class="ledger__row" data-discord-row="members"><dt>Membres</dt><dd data-discord="members">…</dd></div>
+            <div class="ledger__row" data-discord-row="online"><dt>En ligne</dt><dd data-discord="online">…</dd></div>
+          </dl>
+
+          <a class="btn btn--paper" data-link="discordInvite" href="https://discord.gg/s2aF5C2emx" target="_blank" rel="noopener">Rejoindre le serveur</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <!-- Rempli par js/visits.js (compteur réel, jamais un faux chiffre) -->
+      <p class="visit-counter" data-visit-counter aria-live="polite" hidden></p>
+      <small>© <span data-year>2026</span> ELVA — Développeuse bots &amp; serveurs Discord</small>
+    </div>
+  </footer>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/visits.js" defer></script>
+  <script src="js/projects.js" defer></script>
+  <script src="js/discord.js" defer></script>
+</body>
+</html>
